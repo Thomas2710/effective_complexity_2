@@ -1,0 +1,83 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "effective-complexity"
+version = "0.1.0"
+description = "Representation learning and effective complexity experiments"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+
+authors = [
+  { name = "Your Name", email = "your.email@domain.com" }
+]
+
+keywords = [
+  "representation-learning",
+  "effective-complexity",
+  "neural-networks",
+  "cca",
+  "pca"
+]
+
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11"
+]
+
+dependencies = [
+  # Core ML
+  "torch>=2.0",
+  "numpy>=1.23",
+  "scikit-learn>=1.2",
+  "matplotlib>=3.7",
+
+  # Experiment tracking
+  "wandb>=0.16",
+
+  # CLI
+  "typer>=0.9",
+  "rich>=13.0",
+
+  # Utils
+  "tqdm>=4.65",
+  "pandas>=2.0",
+  "pyyaml>=6.0"
+]
+
+[project.optional-dependencies]
+dev = [
+  "black>=24.0",
+  "isort>=5.12",
+  "pytest>=7.4",
+  "pytest-cov>=4.1",
+  "pre-commit>=3.6"
+]
+
+[project.scripts]
+ec = "effective_complexity.cli.main:app"
+
+[tool.setuptools]
+packages = ["effective_complexity"]
+
+[tool.black]
+line-length = 88
+target-version = ["py39"]
+
+[tool.isort]
+profile = "black"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra -q"
+
+[tool.wandb]
+disabled = false
+

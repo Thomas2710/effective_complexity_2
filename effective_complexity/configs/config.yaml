@@ -1,0 +1,76 @@
+# ============================================================
+# DATASET (teacher + synthetic data)
+# ============================================================
+
+data:
+  type: synthetic
+  num_samples: 10000
+  batch_size: 256
+  seed: 0
+
+  # These two will be OVERRIDDEN per experiment
+  d: 3
+  num_classes: 3
+
+
+# ============================================================
+# STUDENT MODEL / TRAINING
+# ============================================================
+
+model:
+  input_size: 3              # must match d
+  embedding_size: 20         # student rep dim
+  num_classes: 3
+
+  epochs: 500
+  lr: 0.01
+  optimizer: sgd
+
+  patience: 15
+  delta: 1e-6
+
+  check_interval: 50
+
+  # Regularization
+  l1_weight: 0
+  l2_weight: 0
+  l1_lambda: 1e-4
+  l2_lambda: 1e-4
+
+
+# ============================================================
+# ARCHITECTURE SWEEP
+# ============================================================
+
+architectures:
+
+  mlp_small:
+    arch_type: mlp
+    hidden_sizes: [64, 32, 64]
+
+  mlp_medium:
+    arch_type: mlp
+    hidden_sizes: [256, 128, 128, 256]
+
+  mlp_large:
+    arch_type: mlp
+    hidden_sizes: [512, 1024, 1024, 512]
+
+  res_small:
+    arch_type: resmlp
+    hidden_sizes: [256, 64, 256]
+
+  res_medium:
+    arch_type: resmlp
+    hidden_sizes: [256, 128, 128, 256]
+
+  res_large:
+    arch_type: resmlp
+    hidden_sizes: [512, 1024, 1024, 512]
+
+
+# ============================================================
+# SEEDS
+# ============================================================
+
+seeds: [0, 1, 2, 3, 4]

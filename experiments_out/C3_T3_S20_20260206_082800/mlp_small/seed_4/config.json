@@ -1,0 +1,23 @@
+{
+  "input_size": 3,
+  "embedding_size": 20,
+  "num_classes": 3,
+  "hidden_sizes": [
+    64,
+    32,
+    64
+  ],
+  "epochs": 500,
+  "lr": 0.01,
+  "optimizer": "sgd",
+  "patience": 15,
+  "delta": "1e-6",
+  "check_interval": 50,
+  "l1_weight": 0,
+  "l2_weight": 0,
+  "l1_lambda": "1e-4",
+  "l2_lambda": "1e-4",
+  "arch_type": "mlp",
+  "architecture": "mlp_small",
+  "seed": 4
+}
